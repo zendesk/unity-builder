@@ -40,13 +40,6 @@ export default class Versioning {
   }
 
   /**
-   * The commit SHA that triggered the workflow run.
-   */
-  static get sha() {
-    return process.env.GITHUB_SHA;
-  }
-
-  /**
    * Regex to parse version description into separate fields
    */
   static get descriptionRegex() {
@@ -169,7 +162,8 @@ export default class Versioning {
    * identifies the current commit.
    */
   static async getVersionDescription() {
-    return this.git(['describe', '--long', '--tags', '--always', '--debug', this.sha]);
+    const commitIsh = (await this.getTag()) ? 'HEAD' : `origin/${this.branch}`;
+    return this.git(['describe', '--long', '--tags', '--always', '--debug', commitIsh]);
   }
 
   /**
@@ -208,7 +202,11 @@ export default class Versioning {
    * Note: HEAD should not be used, as it may be detached, resulting in an additional count.
    */
   static async getTotalNumberOfCommits() {
-    const numberOfCommitsAsString = await this.git(['rev-list', '--count', this.sha]);
+    const numberOfCommitsAsString = await this.git([
+      'rev-list',
+      '--count',
+      `origin/${this.branch}`,
+    ]);
 
     return Number.parseInt(numberOfCommitsAsString, 10);
   }
