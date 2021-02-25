@@ -90,6 +90,10 @@ inputs:
     required: false
     default: ''
     description: 'The android keyaliasPass'
+  packagePath:
+    required: true
+    default: ''
+    description: 'Full path to the .unitypackage file'
   customParameters:
     required: false
     default: ''

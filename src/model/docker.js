@@ -35,6 +35,7 @@ class Docker {
       androidKeystorePass,
       androidKeyaliasName,
       androidKeyaliasPass,
+      packagePath,
       customParameters,
     } = parameters;
 
@@ -60,6 +61,7 @@ class Docker {
         --env ANDROID_KEYSTORE_PASS="${androidKeystorePass}" \
         --env ANDROID_KEYALIAS_NAME="${androidKeyaliasName}" \
         --env ANDROID_KEYALIAS_PASS="${androidKeyaliasPass}" \
+        --env PACKAGE_PATH="${packagePath}" \
         --env CUSTOM_PARAMETERS="${customParameters}" \
         --env HOME=/github/home \
         --env GITHUB_REF \
