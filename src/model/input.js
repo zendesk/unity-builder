@@ -75,6 +75,10 @@ class Input {
     return core.getInput('androidKeyaliasPass') || '';
   }
 
+  static get packagePath() {
+    return core.getInput('packagePath') || '';
+  }
+
   static get allowDirtyBuild() {
     const input = core.getInput('allowDirtyBuild') || false;
 
