@@ -65,6 +65,7 @@ echo ""
 
 xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
   /opt/Unity/Editor/Unity \
+    -batchmode \
     -nographics \
     -logfile /dev/stdout \
     -quit \
@@ -81,6 +82,7 @@ UNITY_PACKAGE_PATH="$GITHUB_WORKSPACE/$PACKAGE_PATH"
 
 xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
   /opt/Unity/Editor/Unity \
+    -batchmode \
     -nographics \
     -projectPath "$UNITY_PROJECT_PATH"\
     -logfile /dev/stdout \
