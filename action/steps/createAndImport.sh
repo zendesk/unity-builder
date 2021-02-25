@@ -63,11 +63,12 @@ echo "#    Generating unity project    #"
 echo "##################################"
 echo ""
 
-unity-editor \
-  -nographics \
-  -logfile /dev/stdout \
-  -quit \
-  -createProject "$UNITY_PROJECT_PATH"
+xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
+  /opt/Unity/Editor/Unity \
+    -nographics \
+    -logfile /dev/stdout \
+    -quit \
+    -createProject "$UNITY_PROJECT_PATH"
 
 
 echo ""
@@ -76,12 +77,13 @@ echo "#    Importing Package    #"
 echo "###########################"
 echo ""
 
-unity-editor \
-  -nographics \
-  -projectPath "$UNITY_PROJECT_PATH"\
-  -logfile /dev/stdout \
-  -quit \
-  -importPackage "$PACKAGE_PATH"
+xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
+  /opt/Unity/Editor/Unity \
+    -nographics \
+    -projectPath "$UNITY_PROJECT_PATH"\
+    -logfile /dev/stdout \
+    -quit \
+    -importPackage "$PACKAGE_PATH"
 
 # Catch exit code
 BUILD_EXIT_CODE=$?
@@ -100,14 +102,6 @@ fi
 echo ""
 echo "###########################"
 echo "#     Build directory     #"
-echo "###########################"
-echo ""
-
-ls -alh "$BUILD_PATH_FULL"
-
-echo ""
-echo "###########################"
-echo "#     Project Files       #"
 echo "###########################"
 echo ""
 
