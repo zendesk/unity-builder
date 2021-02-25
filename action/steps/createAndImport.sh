@@ -77,13 +77,15 @@ echo "#    Importing Package    #"
 echo "###########################"
 echo ""
 
+UNITY_PACKAGE_PATH="$GITHUB_WORKSPACE/$PACKAGE_PATH"
+
 xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
   /opt/Unity/Editor/Unity \
     -nographics \
     -projectPath "$UNITY_PROJECT_PATH"\
     -logfile /dev/stdout \
     -quit \
-    -importPackage "$PACKAGE_PATH"
+    -importPackage "$UNITY_PACKAGE_PATH"
 
 # Catch exit code
 BUILD_EXIT_CODE=$?
