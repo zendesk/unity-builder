@@ -58,9 +58,10 @@ echo ""
 ls -alh $UNITY_PROJECT_PATH
 
 echo ""
-echo "##################################"
-echo "#    Generating unity project    #"
-echo "##################################"
+echo "####################################"
+echo "#    Generating unity project      #"
+echo "# Project Path: $UNITY_PROJECT_PATH#"
+echo "####################################"
 echo ""
 
 xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
@@ -73,9 +74,10 @@ xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
 
 
 echo ""
-echo "###########################"
-echo "#    Importing Package    #"
-echo "###########################"
+echo "###################################"
+echo "#    Importing Package            #"
+echo "#    Package: #UNITY_PACKAGE_PATH #"
+echo "###################################" 
 echo ""
 
 UNITY_PACKAGE_PATH="$GITHUB_WORKSPACE/$PACKAGE_PATH"
@@ -110,3 +112,6 @@ echo "###########################"
 echo ""
 
 ls -alh "$BUILD_PATH_FULL"
+ls -alh "UNITY_PROJECT_PATH"
+ls -alh "UNITY_PROJECT_PATH/Assets"
+ls -alh "UNITY_PROJECT_PATH/Assets/Zendesk"
