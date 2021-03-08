@@ -32,10 +32,6 @@ CUSTOM_BUILD_PATH="$BUILD_PATH_FULL/$BUILD_FILE"
 #
 echo "Using custom parameters $CUSTOM_PARAMETERS."
 
-# The build specification below may require Unity 2019.2.11f1 or later (not tested below).
-# Reference: https://docs.unity3d.com/2019.3/Documentation/Manual/CommandLineArguments.html
-
-#
 # Build info
 #
 
@@ -115,3 +111,12 @@ ls -alh "$BUILD_PATH_FULL"
 ls -alh "$UNITY_PROJECT_PATH"
 ls -alh "$UNITY_PROJECT_PATH/Assets"
 ls -alh "$UNITY_PROJECT_PATH/Assets/Zendesk"
+
+
+echo ""
+echo "######################################"
+echo "#     Validate extracted package     #"
+echo "######################################"
+echo ""
+
+sh $GITHUB_WORKSPACE/Scripts/unityPackageValidator.sh
