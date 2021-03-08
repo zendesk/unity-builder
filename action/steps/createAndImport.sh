@@ -76,7 +76,7 @@ xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
 echo ""
 echo "###################################"
 echo "#    Importing Package            #"
-echo "#    Package: #UNITY_PACKAGE_PATH #"
+echo "#    Package: $UNITY_PACKAGE_PATH #"
 echo "###################################" 
 echo ""
 
@@ -112,6 +112,6 @@ echo "###########################"
 echo ""
 
 ls -alh "$BUILD_PATH_FULL"
-ls -alh "UNITY_PROJECT_PATH"
-ls -alh "UNITY_PROJECT_PATH/Assets"
-ls -alh "UNITY_PROJECT_PATH/Assets/Zendesk"
+ls -alh "$UNITY_PROJECT_PATH"
+ls -alh "$UNITY_PROJECT_PATH/Assets"
+ls -alh "$UNITY_PROJECT_PATH/Assets/Zendesk"
