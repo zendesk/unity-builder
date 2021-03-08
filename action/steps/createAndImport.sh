@@ -97,10 +97,6 @@ else
   echo "Build failed, with exit code $BUILD_EXIT_CODE";
 fi
 
-#
-# Results
-#
-
 echo ""
 echo "###########################"
 echo "#     Build directory     #"
@@ -119,7 +115,7 @@ echo "#     Validate extracted package     #"
 echo "######################################"
 echo ""
 
-for entry in "$UNITY_PROJECT_PATH/Assets/Zendesk/*"/*
+for entry in "$UNITY_PROJECT_PATH/Assets/Zendesk"/*
 do
   echo "$entry"
 done
