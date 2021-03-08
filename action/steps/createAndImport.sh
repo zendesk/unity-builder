@@ -119,4 +119,7 @@ echo "#     Validate extracted package     #"
 echo "######################################"
 echo ""
 
-sh $GITHUB_WORKSPACE/Scripts/unityPackageValidator.sh
+for entry in "$UNITY_PROJECT_PATH/Assets/Zendesk/*"/*
+do
+  echo "$entry"
+done
