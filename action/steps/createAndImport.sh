@@ -71,20 +71,20 @@ xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
 echo ""
 echo "########################################"
 echo "#    Importing Packages                #"
-echo "#    Package List: $UNITY_PACKAGE_PATH #"
+echo "#    Package List: $PACKAGE_PATH       #"
 echo "########################################" 
 echo ""
 
-for packagePath in $(echo $UNITY_PACKAGE_PATH | sed "s/,/ /g")
+for package in $(echo $PACKAGE_PATH | sed "s/,/ /g")
 do
 echo ""
 echo "###################################"
 echo "#    Importing Package            #"
-echo "#    Package: $packagePath        #"
+echo "#    Package: $package            #"
 echo "###################################" 
 echo ""
 
-fullPackagePath="$GITHUB_WORKSPACE/$packagePath"
+fullPackagePath="$GITHUB_WORKSPACE/$package"
 echo "Full Package Path: $fullPackagePath"
 
 xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
