@@ -68,15 +68,24 @@ xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     -quit \
     -createProject "$UNITY_PROJECT_PATH"
 
+echo ""
+echo "########################################"
+echo "#    Importing Packages                #"
+echo "#    Package List: $UNITY_PACKAGE_PATH #"
+echo "########################################" 
+echo ""
 
+for packagePath in $(echo $UNITY_PACKAGE_PATH | sed "s/,/ /g")
+do
 echo ""
 echo "###################################"
 echo "#    Importing Package            #"
-echo "#    Package: $UNITY_PACKAGE_PATH #"
+echo "#    Package: $packagePath        #"
 echo "###################################" 
 echo ""
 
-UNITY_PACKAGE_PATH="$GITHUB_WORKSPACE/$PACKAGE_PATH"
+fullPackagePath="$GITHUB_WORKSPACE/$packagePath"
+echo "Full Package Path: $fullPackagePath"
 
 xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
   /opt/Unity/Editor/Unity \
@@ -85,7 +94,7 @@ xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
     -projectPath "$UNITY_PROJECT_PATH"\
     -logfile /dev/stdout \
     -quit \
-    -importPackage "$UNITY_PACKAGE_PATH"
+    -importPackage "$fullPackagePath"
 
 # Catch exit code
 BUILD_EXIT_CODE=$?
@@ -96,6 +105,8 @@ if [ $BUILD_EXIT_CODE -eq 0 ]; then
 else
   echo "Build failed, with exit code $BUILD_EXIT_CODE";
 fi
+
+done
 
 echo ""
 echo "###########################"
